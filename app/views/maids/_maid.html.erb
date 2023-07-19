@@ -1,0 +1,49 @@
+<div id="<%= dom_id maid %>">
+  
+  
+  <p class="my-5">
+    <strong class="block font-medium mb-1">First name:</strong>
+    <%= maid.first_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Last name:</strong>
+    <%= maid.last_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email:</strong>
+    <%= maid.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Address:</strong>
+    <%= maid.address %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">City:</strong>
+    <%= maid.city %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">State:</strong>
+    <%= maid.state %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Zip:</strong>
+    <%= maid.zip %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Hourly rate:</strong>
+    <%= maid.hourly_rate %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this maid", maid, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this maid', edit_maid_path(maid), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

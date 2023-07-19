@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FinalProject</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav class="container relative mx-auto mt-2 p-6 border-b">
+      <div class="flex justify-between">
+        <%= link_to image_tag("maidhire-logo.png", class: "w-40"), (current_user || root_path) %>
+        <div class="hidden items-center space-x-10 uppercase text-grayishBlue md:flex">
+          <a href="#features" class="tracking-widest hover:text-softRed">Features</a>
+          <a href="#download" class="tracking-widest hover:text-softRed">Download</a>
+          <a href="#faq" class="tracking-widest hover:text-softRed">FAQ</a>
+          <%= link_to "Log in", new_session_path, class: "px-8 py-2 text-white bg-softRed border-2 border-softRed rounded-lg shadow-md hover:text-softRed hover:bg-white" %>
+        </div>
+      </div>
+    </nav>
+
+      <main class="container mx-auto mt-20 px-5">
+        <%= yield %>
+      </main>
+  </body>
+</html>

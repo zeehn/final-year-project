@@ -1,0 +1,38 @@
+
+<nav class="p-6 border-r md:w-48">
+  <% if current_user_admin? %>
+    <ul class="leading-8">
+      <li><%= link_to "Clients", clients_path, class: "text-gray-500 hover:text-blue-800 font-bold" %></li>
+      <li><%= link_to "Maids", maids_path, class: "text-gray-500 hover:text-blue-800 font-bold" %></li>
+      <li><%= link_to "Pending", "#", class: "text-gray-500 font-bold hover:text-blue-800" %></li>
+    </ul>
+    <hr class="my-2">   
+    <ul class="leading-8">
+      <li><%= link_to "My Profile", current_user, class: "text-gray-500 font-bold hover:text-blue-800" %></li>
+      <li><%=link_to 'Logout', session_path, data:{turbo_method: :delete }, class:'text-gray-500 font-bold hover:text-blue-800'%></li>  
+    </ul>
+       
+  <% elsif current_user %>
+    <% if current_user.instance_of? Maid %>
+    <% else %>  
+      <ul class="leading-8">
+        <li><%= link_to "Browse Maids", maids_path, class: "text-gray-500 font-bold hover:text-blue-800" %></li>
+      </ul>
+    <% end %>
+    <hr class="my-2">   
+    <ul class="leading-8">
+      <li><%= link_to "My Profile", current_user, class: "text-gray-500 font-bold hover:text-blue-800" %></li>
+      <li><%= link_to "Orders", orders_path, class: "text-gray-500 font-bold hover:text-blue-800" %></li>
+      <li><%= link_to "Logout",session_path,data:{ turbo_method: :delete }, class: "text-gray-500 font-bold hover:text-blue-800" %></li>
+    </ul>
+       
+  <% else %>
+    <ul class="leading-8">
+    </ul>  
+    <hr class="my-2">     
+    <ul class="leading-8">
+    </ul>
+  <% end %>
+</nav>
+
+

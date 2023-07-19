@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FinalProject</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav class="container relative mx-auto mt-2 p-6 border-b">
+      <%= link_to image_tag("maidhire-logo.png", class: "w-40"), (current_user || root_path) %>
+    </nav>
+
+    <section class="container mx-auto flex">
+      <%= render "layouts/sidebar" %>
+      <main class="container mx-auto mt-10 px-5 flex">
+        <%= yield %>
+      </main>
+    </section>
+
+  </body>
+</html>

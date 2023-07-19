@@ -1,0 +1,49 @@
+<div id="<%= dom_id order %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Schedule date:</strong>
+    <%= order.schedule_date %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Time from:</strong>
+    <%= format_time(order.time_from) %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Time to:</strong>
+    <%= format_time(order.time_to) %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Instructions:</strong>
+    <%= order.instructions %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Payment Method: </strong>
+    <%= order.pay_type %>
+  </p>
+
+  <p class="my-5">
+<span class="rounded-md bg-yellow-50 px-3 py-2 text-lg font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20"><%= order.status %></span>
+  </p>
+
+  <% if order.maid.reviews %>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Feedback Given:</strong>
+    <%= render "shared/stars", percent: 80 %>
+  </p>
+  <% end %>
+
+
+  <% if action_name != "show" %>
+      <% if current_user == order.maid %>
+        <%= link_to "Show this order", order, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to 'Accept Offer', accept_order_path(order), data: { turbo_method: :post }, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+      <% else %>
+        <%= link_to 'Cancel Order', withdraw_order_path(order), data: { turbo_method: :post }, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to 'Mark Complete', complete_order_path(order), data: { turbo_method: :post }, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+      <% end %>
+      <hr class="mt-6">
+  <% end %>
+</div>

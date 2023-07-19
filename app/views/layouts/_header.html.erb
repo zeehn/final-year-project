@@ -1,0 +1,24 @@
+<header>
+  <nav class="container">
+    <%= link_to "MaidHire", "#", class: "navbar-brand h1 fs-2 text-white py-auto my-auto " %>
+    <ul class="left">
+      <li><%= nav_link_to "Dashboard", current_user %></li>
+      <li><%#= nav_link_to "Upcoming", filtered_movies_path(:upcoming) %></li>
+      <li><%#= nav_link_to "Recent", filtered_movies_path(:recent) %></li>
+      <li><%#= nav_link_to "Hits", filtered_movies_path(:hits) %></li>
+      <li><%#= nav_link_to "Flops", filtered_movies_path(:flops) %></li>
+    </ul>
+
+    <ul class="right">
+      <% if current_user %>
+        <li><%= link_to current_user.name, current_user %></li>
+        <li><%= link_to "Account Settings", edit_user_path(current_user) %></li>
+        <li><%= link_to "Sign Out", session_path, method: :delete, class: 'button' %></li>
+      <% else %>
+        <li><%= link_to "Sign Up", new_maid_path, class: 'button' %></li>
+        <li><%= link_to "Sign In", new_session_path, class: 'button' %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>
+

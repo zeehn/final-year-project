@@ -1,0 +1,28 @@
+<li class="py-2 hover:bg-indigo-300 rounded">
+  <%= link_to current_user do %>
+    <%= image_tag("//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/home.svg", class: "w-7 sm:mx-2 mx-4 inline") %>
+    <span class="font-lg align-bottom">Dashboard</span>
+  <% end %>
+</li>
+
+<li class="py-2 hover:bg-indigo-300 rounded">
+  <%= link_to orders_path do %>
+    <%= image_tag("//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/cube-transparent.svg", class: "w-7 sm:mx-2 mx-4 inline") %>
+    <span class="font-lg align-bottom">Orders</span>
+  <% end %>
+</li>
+        
+<li class="py-2 hover:bg-indigo-300 rounded">
+  <%= link_to user_path do %>
+    <%= image_tag("//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/cog.svg", class: "w-7 sm:mx-2 mx-4 inline") %>
+    <span class="font-lg align-bottom">Profile Settings</span>
+  <% end %>
+</li>
+         
+<li class="py-2 hover:bg-indigo-300 rounded">
+  <%= link_to session_path, data: { turbo_method: :delete } do %>
+    <%= image_tag("//cdn.jsdelivr.net/npm/heroicons@1.0.1/outline/arrow-right.svg", class: "w-7 sm:mx-2 mx-4 inline") %>
+    <span class="font-lg align-bottom">Sign Out</span>
+  <% end %>
+</li>
+
