@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
 
   def withdraw
     if @order.pending?
-      @order.cancel!
+      @order.update_columns(status: 3)
       redirect_to @order, notice: "Order cancelled"
     else
       redirect_to orders_path, notice: "Can't cancel."
@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         session[:maid_id] = nil
-        format.html { redirect_to current_user, notice: "Order was successfully created." }
+        format.html { redirect_to @order, notice: "Order was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

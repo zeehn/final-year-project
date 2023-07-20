@@ -14,4 +14,11 @@ class Maid < ApplicationRecord
   def average_stars_as_percent
     (self.average_stars / 5.0) * 100
   end
+
+  def has_overlapping_orders?(schedule_date, time_from, time_to)
+    orders.where("(schedule_date = ? AND time_from <= ? AND time_to >= ?) OR (schedule_date = ? AND time_from <= ? AND time_to >= ?)",
+                   schedule_date, time_to, time_from,
+                   schedule_date, time_from, time_to).exists?
+  end
+
 end
