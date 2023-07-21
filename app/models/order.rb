@@ -17,6 +17,35 @@ class Order < ApplicationRecord
   validates :schedule_date, :time_from, :time_to, presence: true 
   validate :end_time_after_start_time
   validate :maid_availability
+
+  def find_total
+    # Ensure that time_from and time_to are in the same timezone, or adjust them if needed
+
+    time_from = self.time_from.in_time_zone('Central Time (US & Canada)')
+    time_to = self.time_to.in_time_zone('Central Time (US & Canada)')
+
+    # Calculate the duration between time_from and time_to
+    duration = time_to - time_from
+    # If the maid is hired between 11 PM to 1 AM and the date changes, adjust the duration
+    if time_from.hour > time_to.hour
+      # Calculate the duration until midnight
+      duration_until_midnight = (time_from.end_of_day - time_from).to_i
+
+      # Calculate the duration from midnight to time_to
+      duration_from_midnight = (time_to - time_to.beginning_of_day).to_i
+
+      # Calculate the total duration
+      duration = duration_until_midnight + duration_from_midnight
+    end
+
+    # Convert the duration to hours (duration is in seconds)
+    hours = duration / 1.hour
+    hours.to_f * self.maid.hourly_rate # Convert to float for more accurate calculations
+  end
+
+  def order_number
+    "#{id}#{created_at.strftime("%y-%m-%d").split("-").join}"
+  end
   
   def formatted_pay_type
     pay_type.titleize

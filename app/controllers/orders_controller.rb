@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy accept withdraw complete]
-  
+ # before_action :find_total, only: %i[ index show]  
   def index
     if current_user_admin?
       @orders = Order.all
@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
   
   def accept
     if @order.pending? 
-      @order.inprogress!
+      @order.update_columns(status: 1)
       redirect_to @order, notice: "Offer accepted!"
     else 
       redirect_to @order, notice: "Offer can't be accepted!"
@@ -39,8 +39,8 @@ class OrdersController < ApplicationController
   end
 
   def complete
-    if @order.inprogress?
-      @order.completed!
+    if @order.in_progress?
+      @order.update_columns(status: 2)
       redirect_to new_maid_review_path(@order.maid_id), notice: "Order completed."
     else
       redirect_to @order, notice: "Order can't be completed"

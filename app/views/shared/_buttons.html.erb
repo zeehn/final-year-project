@@ -1,0 +1,18 @@
+<%# if action_name != "show" %>
+  <%# if current_user == order.maid %>
+    <%#= link_to "Show this order", order, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%#= link_to 'Accept Offer', accept_order_path(order), data: { turbo_method: :post }, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+  <%# else %>
+    <%#= link_to 'Cancel Order', withdraw_order_path(order), data: { turbo_method: :post }, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%#= link_to 'Mark Complete', complete_order_path(order), data: { turbo_method: :post }, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+  <%# end %>
+<%# end %>
+
+<% if order.pending? %>
+  <%= link_to 'Cancel Order', withdraw_order_path(order), data: { turbo_method: :post }, class: "rounded-lg py-3 ml-2 px-5 bg-red-400 text-gray-900 inline-block font-medium" %>
+  <% if current_user.instance_of?(Maid) %>
+    <%= link_to "Accept Order", accept_order_path(order), data: { turbo_method: :post }, class: "rounded-lg py-3 ml-2 px-5 bg-green-400 text-gray-900 inline-block font-medium" %>
+  <% end %>
+<% elsif order.in_progress? and current_user.instance_of?(Client) %>
+ <%= link_to 'Mark Complete', complete_order_path(order), data: { turbo_method: :post }, class: "rounded-lg py-3 ml-2 px-5 bg-green-600 text-white inline-block font-medium" %>
+<% end %>
