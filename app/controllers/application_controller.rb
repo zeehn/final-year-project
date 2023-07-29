@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user_admin?
   helper_method :current_user
-
+  helper_method :current_user?
   private 
     def find_user_by_session_id(id)
       if session[:user_id]

@@ -1,9 +1,9 @@
-<section class="mx-auto md:w-[90%]">
+<section class="mx-auto md:w-[90%] p-4 bg-white">
   <%= render "shared/notice" %>
   
-  <div class="border rounded-lg bg-white border-gray-200 mt-4 p-8 w-full flex flex-col sm:flex-row flex-wrap sm:flex-nowrap flex-grow justify-items-center align-items-center center">
+  <div class="w-full flex flex-col sm:flex-row flex-wrap sm:flex-nowrap py-6 flex-grow justify-items-center align-items-center center">
     <div class="w-fixed flex-none flex-grow-0 px-4 text-center">
-      <%= image_tag("maid_ph.jpg", class: "w-[208px] h-auto aspect-[4/5] object-top object-cover rounded-lg border-1 shadow-box-shadow") %>
+      <%= image_tag("maid_ph.jpg", class: "w-[250px] h-[250px] object-top object-cover rounded-lg border-1 shadow-box-shadow") %>
       <p class="mt-6 flex items-baseline justify-center gap-x-2">
       <span class="text-4xl font-bold tracking-tight text-gray-900"><%= @maid.hourly_rate %><span>
       <span class="text-lg font-semibold leading-6 tracking-wider text-gray-600">USD/hr</span>
@@ -15,9 +15,7 @@
     <div class="w-full grow space-y-4 px-3 leading-7 font-light">
       <div class="flex justify-between items-center">
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 mb-4"><%= @maid.name %></h2>
-        <% if current_user?(@maid) %>
-          <%= link_to "Edit Profile", user_path, class: "px-3 py-2 bg-softBlue text-white font-bold rounded items-center" %>
-        <% end %>
+        <%= link_to "Edit Profile", user_path, class: "px-3 py-2 bg-softBlue text-gray-100 font-bold rounded items-center" %>
       </div>
       <span class="text-2xl flex items-center text-center text-middle">
         <%= render "shared/stars", percent: @maid.average_stars_as_percent %> 

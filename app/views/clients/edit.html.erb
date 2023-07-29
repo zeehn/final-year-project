@@ -1,8 +1,9 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing client</h1>
+  <h1 class="font-bold text-4xl mb-2">Editing profile</h1>
 
   <%= render "form", client: @client %>
-
+  <% if current_user_admin? %>
   <%= link_to "Show this client", @client, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   <%= link_to "Back to clients", clients_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <% end %>
 </div>

@@ -2,6 +2,10 @@ class Maid < ApplicationRecord
   has_many :orders, dependent: :destroy 
   has_many :reviews, dependent: :destroy  
   has_secure_password
+
+
+  validates :first_name, :last_name, :email, :address, :city, :state, :hourly_rate, presence: true
+
   def name 
     "#{first_name} #{last_name}"
   end
