@@ -18,6 +18,9 @@ class Order < ApplicationRecord
   validate :end_time_after_start_time
   validate :maid_availability
 
+  default_scope { order(created_at: :desc)}
+  scope :recent, -> { order(created_at: :desc) }
+
   def find_total
     # Ensure that time_from and time_to are in the same timezone, or adjust them if needed
 

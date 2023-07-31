@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'choose', to: 'pages#account_type'
   resources :admins
-  resources :maids do 
+  resources :maids do
+    member do 
+      get :dashboard
+    end
     resources :reviews
   end  
   resources :clients
@@ -14,7 +17,6 @@ Rails.application.routes.draw do
       post :complete
     end
   end
-   
   resource :session, only: [:new, :create, :destroy]  
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

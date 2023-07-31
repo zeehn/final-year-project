@@ -8,11 +8,9 @@
       <span class="text-4xl font-bold tracking-tight text-gray-900"><%= @maid.hourly_rate %><span>
       <span class="text-lg font-semibold leading-6 tracking-wider text-gray-600">USD/hr</span>
       </p>
-      <% if current_user.instance_of?(Client) %>
       <div class="my-6 block justify-center">
         <%= link_to "HIRE ME", new_order_path(maid_id: @maid.id), class: "px-8 py-4 mt-4 bg-green-800 rounded text-white font-bold block text-center tracking-wider" %> 
       </div>
-      <% end %>
     </div>
     <div class="w-full grow space-y-4 px-3 leading-7 font-light">
       <div class="flex justify-between items-center">
@@ -80,5 +78,3 @@
   </div>
 -->
 </section>
-
-

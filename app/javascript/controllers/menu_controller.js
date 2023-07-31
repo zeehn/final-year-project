@@ -6,6 +6,6 @@ export default class extends Controller {
   // this.element.textContent = "Hello World!"
   //}
   toggle(){
-    console.log("it works")
+    this.toggleableTarget.classList.toggle('hidden')
   }
 }

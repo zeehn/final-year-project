@@ -66,8 +66,12 @@
   </div>
 
   <div class="max-w-xs flex text-center">
-    <%= form.submit "Create Account", class: "rounded-lg py-3 px-5 bg-blue-600 text-white w-full font-medium cursor-pointer" %>
-    <%= link_to "Cancel", root_path, class: "rounded-lg py-3 px-5 bg-gray-400 text-white ml-2 w-full font-medium cursor-pointer" %>
-
+    <% if maid.new_record? %>
+      <%= form.submit "Create Account", class: "rounded-lg py-3 px-5 bg-blue-600 text-white w-full font-medium cursor-pointer" %>
+      <%= link_to "Cancel", root_path, class: "rounded-lg py-3 px-5 bg-gray-400 text-white ml-2 w-full font-medium cursor-pointer" %>
+    <% else %>
+      <%= form.submit "Update Account", class: "rounded-lg py-3 px-5 bg-blue-600 text-white w-full font-medium cursor-pointer" %>
+      <%= link_to "Cancel", maid_path, class: "rounded-lg py-3 px-5 bg-gray-400 text-white ml-2 w-full font-medium cursor-pointer" %>
+    <% end %>
   </div>
 <% end %>

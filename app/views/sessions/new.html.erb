@@ -1,4 +1,4 @@
-<div class="mx-auto md:w-2/3">
+<div class="mx-auto w-[50%]">
   <% flash.each do |type, message| %>
     <%= content_tag(:div, message, class: "bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mb-3") %>
   <% end %>
@@ -7,16 +7,16 @@
   <%= form_with(url: session_path, class: "contents") do |form| %>
     <div class="my-5">
       <%= form.label :email %>
-      <%= form.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.text_field :email, class: "w-full block rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
     </div>
 
     <div class="my-5">
       <%= form.label :password %>
-      <%= form.password_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
+      <%= form.password_field :password, class: "w-full block rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
     </div>
 
   <div class="inline">
     <%= form.submit "Sign in", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
-<% end %>
+  <% end %>
 </div>
