@@ -14,16 +14,13 @@ class ClientsController < ApplicationController
     @completed_orders = @client.orders.completed.limit(2)
   end
 
-  # GET /clients/new
   def new
     @client = Client.new
   end
 
-  # GET /clients/1/edit
   def edit
   end
 
-  # POST /clients or /clients.json
   def create
     @client = Client.new(client_params)
 
@@ -39,7 +36,6 @@ class ClientsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /clients/1 or /clients/1.json
   def update
     respond_to do |format|
       if @client.update(client_params)
@@ -52,7 +48,6 @@ class ClientsController < ApplicationController
     end
   end
 
-  # DELETE /clients/1 or /clients/1.json
   def destroy
     @client.destroy
     session[:user_id] = nil if session[:user_id] = @client.email
@@ -63,12 +58,10 @@ class ClientsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_client
       @client = Client.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def client_params
       params.require(:client).permit(:first_name, :last_name, :email, :password, :password_confirmation, :address, :city, :state, :country, :zip)
     end

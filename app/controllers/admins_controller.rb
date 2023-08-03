@@ -7,6 +7,8 @@ class AdminsController < ApplicationController
   end
 
   def show
+    @pending_accounts = Maid.where.not(status: 1)
+    @blocked_accounts = Maid.blocked 
   end
 
   def new

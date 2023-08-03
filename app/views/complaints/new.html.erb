@@ -1,0 +1,15 @@
+<div class="mx-auto md:w-2/3">
+  <h1 class="text-3xl font-bold tracking-tight text-gray-900 mb-4">Write a complaint</h1>
+
+  <%= form_with(model: @complaint, class: "contents") do |f| %>
+    <%= render "shared/errors", obj: @complaint %>
+    <div class="my-5">
+      <%= f.label :message, "Your concern" %>
+      <%= f.text_area :message, rows: 10, class: "block rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="inline">
+      <%= f.submit "Send", class: "rounded-lg py-3 px-8 text-center text-lg bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    </div>
+  <% end %>
+</div>

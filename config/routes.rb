@@ -5,9 +5,16 @@ Rails.application.routes.draw do
   resources :maids do
     member do 
       get :dashboard
+      get :block
+      get :approve
+    
+    resources :complaints, only: [:new, :create]
     end
+    
     resources :reviews
   end  
+  get "complaints", to: "complaints#index", as: "all_complaints"
+
   resources :clients
     
   resources :orders do 

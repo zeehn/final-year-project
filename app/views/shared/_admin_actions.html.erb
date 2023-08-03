@@ -1,0 +1,13 @@
+<% if account.pending? %>
+  <td class="py-4">
+    <%= link_to "Block Account", block_maid_path(account), class: "px-2.5 py-3 text-white bg-red-500 rounded" %>
+  </td>
+  <td class="py-4">
+    <%= link_to "Approve Account", approve_maid_path(account), class: "px-2.5 py-3 text-white bg-indigo-500 rounded" %>
+  </td>
+<% elsif account.blocked? %>
+  <td class="py-4">
+    <%= link_to "Activate Account", approve_maid_path(account), class: "px-2.5 py-3 text-white bg-indigo-500 rounded" %>
+  </td>
+<% end %>
+

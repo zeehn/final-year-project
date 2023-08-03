@@ -1,4 +1,4 @@
-<section class="mx-auto md:w-[90%] ">
+<section class="mx-auto md:w-[90%]">
   <%= render "shared/notice" %>
   <% @maids.each do |maid| %> 
     <div class="w-full flex flex-col sm:flex-row flex-wrap sm:flex-nowrap py-6 flex-grow justify-items-center align-items-center center border rounded-lg bg-white border-gray-200 mt-4 px-4" >
@@ -9,14 +9,20 @@
           <span class="text-lg font-semibold leading-6 tracking-wider text-gray-600">USD/hr</span>
         </p>
         <div class="mt-4 block justify-center">
+          <% if current_user_admin? %> 
+          <%= link_to "Block Account", block_maid_path(maid), class: "px-2 py-2 mt-4 bg-red-500 rounded text-white font-medium block text-center" %> 
+          <% else %>
           <%= link_to "HIRE ME", new_order_path(maid_id: maid.id), class: "px-6 py-2 mt-4 bg-green-800 rounded text-white font-bold block text-center tracking-wider" %> 
+          <% end %>
         </div>
       </div>
     
       <div class="w-full grow space-y-2 px-3 leading-7 font-light">
         <div class="flex justify-between items-center">
           <h2 class="text-3xl font-bold tracking-tight mb-4 text-blue-500"><%= link_to maid.name, maid %></h2>
-          <%#= link_to "Edit Profile", edit_maid_path(maid.id), class: "px-3 py-2 bg-blue-400 text-gray-200 font-bold rounded items-center" %>
+          <% if current_user_admin? %>
+          <%= link_to "Edit Profile", edit_maid_path(maid.id), class: "px-2 py-1.5 bg-indigo-500 text-white rounded items-center" %>
+          <% end %>
         </div>
         <span class="text-2xl flex items-center text-center text-middle">
           <%= render "shared/stars", percent: maid.average_stars_as_percent %> 

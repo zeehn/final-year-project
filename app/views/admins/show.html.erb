@@ -1,15 +1,47 @@
-<div class="mx-auto md:w-2/3 w-full flex">
+<div class="mx-auto md:w-[90%]">
   <div class="mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= render @admin %>
+    <div class="pt-11 border-gray-300 border bg-white">
+      <h2 class="px-8 leading-7 font-bold text-base">Pending Action</h2> 
 
-    <%= link_to 'Edit this admin', edit_admin_path(@admin), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this admin', admin_path(@admin), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <table class="text-left whitespace-nowrap w-full mt-6 border-collapse">
+        <thead class="leading-6 text-sm">
+          <tr class="">
+            <th class="py-2 px-8 font-semibold">User</th>
+            <th class="pr-8 pl-0 py-2 font-semibold">Role</th>
+            <th class="pr-20 pl-0 py-2 text-left font-semibold">Status</th>
+         </tr>
+        </thead>
+        <tbody>
+        <% @pending_accounts.each do |account| %>
+          <tr class="border">
+            <td class="px-8 py-4">
+              <div class="leading-6 font-normal text-base text-blue-500"><%= link_to account.name, account %></div>
+            </td>
+            <td class="pr-8 pl-0 py-4">
+              <div class="leading-6 font-normal text-base"><%= account.class %></div>
+            </td>
+            <td class="pr-20 pl-0 leading-6 py-4">
+              <div><i><%= account.status %></i></div>
+            </td>
+            <% if account.pending? %>
+              <td class="py-4 text-right pr-8">
+                <%= link_to "Block", block_maid_path(account), class: "py-2 px-3 bg-red-500 text-white tracking-tight rounded" %>
+                <%= link_to "Approve", approve_maid_path(account), class: "ml-2 py-2 px-3 bg-indigo-500 text-white rounded tracking-tight" %>
+              </td>
+            <% elsif account.blocked? %>
+              <td class="py-4 text-right pr-8">
+                <%= link_to "Activate", approve_maid_path(account), class: "px-3 py-2 text-white bg-indigo-500 rounded" %>
+              </td>
+              <td></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>  
+      </table> 
     </div>
-    <%= link_to 'Back to admins', admins_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

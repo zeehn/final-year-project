@@ -1,0 +1,25 @@
+<div class="mx-auto md:w-[80%]">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <h2 class="font-bold text-2xl text-center mb-4">Complaints</h2>
+
+    <% @complaints.each do |complaint| %>
+      <div class="border-gray-300 border bg-white">
+        <div class="p-8">
+        <div class="flex justify-between leading-7 tracking-wide">
+          <div>Client: <%= complaint.client.name %></div>
+          <div>Maid: <%= link_to complaint.maid.name, complaint.maid, class: "text-indigo-600" %></div>
+        </div>
+        <div class="mt-4 leading-7">
+          <div class="max-w-2xl mx-auto">
+            <p class="mx-10 px-6 py-2 bg-gray-100 mt-1"><%= complaint.message %></p>
+          </div>
+        </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

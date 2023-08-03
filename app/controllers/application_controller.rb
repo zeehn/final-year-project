@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
     @current_user || find_user_by_session_id(session[:user_id])
   end
 
+  def block_user
+    @user.block!
+  end
 
   def current_user_admin?
     current_user and current_user.admin?

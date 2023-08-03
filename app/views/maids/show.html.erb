@@ -12,7 +12,17 @@
       <div class="my-6 block justify-center">
         <%= link_to "HIRE ME", new_order_path(maid_id: @maid.id), class: "px-8 py-4 mt-4 bg-green-800 rounded text-white font-bold block text-center tracking-wider" %> 
       </div>
+      <hr>
+
+      <div class="mt-4 text-sm">
+        Have a problem? <%= link_to "Report maid", new_complaint_path(@maid), class: "underline text-indigo-600 text-sm" %>
+      </div>
       <% end %>
+          
+      <% if current_user_admin? %> 
+        <%= link_to "Block Account", block_maid_path(@maid), class: "px-2 py-2 mt-4 bg-red-500 rounded text-white font-medium block text-center" %> 
+      <% end %>
+
     </div>
     <div class="w-full grow space-y-4 px-3 leading-7 font-light">
       <div class="flex justify-between items-center">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_18_102444) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_055356) do
   create_table "admins", force: :cascade do |t|
     t.string "full_name"
     t.string "email"
@@ -33,6 +33,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_102444) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
+    t.integer "status", default: 0
+  end
+
+  create_table "complaints", force: :cascade do |t|
+    t.text "message"
+    t.integer "maid_id", null: false
+    t.integer "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_complaints_on_client_id"
+    t.index ["maid_id"], name: "index_complaints_on_maid_id"
   end
 
   create_table "maids", force: :cascade do |t|
@@ -49,6 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_102444) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.text "about"
+    t.integer "status", default: 0
   end
 
   create_table "orders", force: :cascade do |t|
@@ -78,6 +90,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_102444) do
     t.index ["maid_id"], name: "index_reviews_on_maid_id"
   end
 
+  add_foreign_key "complaints", "clients"
+  add_foreign_key "complaints", "maids"
   add_foreign_key "orders", "clients"
   add_foreign_key "orders", "maids"
   add_foreign_key "reviews", "clients"

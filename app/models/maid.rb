@@ -1,8 +1,14 @@
 class Maid < ApplicationRecord
   has_many :orders, dependent: :destroy 
   has_many :reviews, dependent: :destroy  
+  has_many :complaints
   has_secure_password
 
+  enum status: {
+    pending: 0,
+    active: 1,
+    blocked: 2
+  }
 
   validates :first_name, :last_name, :email, :address, :city, :state, :hourly_rate, presence: true
 

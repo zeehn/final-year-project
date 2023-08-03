@@ -1,10 +1,10 @@
 class MaidsController < ApplicationController
-  before_action :set_maid, only: %i[ show edit update destroy dashboard ]
+  before_action :set_maid, only: %i[ show edit update destroy dashboard block approve]
   before_action :require_signin, except: [:new, :create]
   before_action :require_correct_user, only: [:edit, :update, :destroy] 
   
   def index
-    @maids = Maid.all
+    @maids = Maid.active
   end
 
   def show
@@ -50,6 +50,20 @@ class MaidsController < ApplicationController
   def dashboard    
     @new_orders = @maid.orders.pending
     @progress_orders = @maid.orders.in_progress
+  end
+
+  def block
+    if !@maid.blocked?
+      @maid.update_columns(status: 2)
+      redirect_to current_user
+    end
+  end
+
+  def approve
+    if @maid.pending? || @maid.blocked?
+      @maid.update_columns(status: 1)
+      redirect_to current_user
+    end    
   end
 
   private
