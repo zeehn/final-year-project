@@ -36,7 +36,7 @@ end
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = Faker::Internet.email(name: "#{first_name} #{last_name}", separators: '.')
-  password = Faker::Internet.password
+  password = "Secret"
   address = Faker::Address.street_address
   city = Faker::Address.city
   state = Faker::Address.state

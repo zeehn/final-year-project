@@ -5,7 +5,8 @@
     <% end %>
 
     <h2 class="font-bold text-2xl text-center mb-4">Complaints</h2>
-
+    
+    <% if @complaints.any? %>
     <% @complaints.each do |complaint| %>
       <div class="border-gray-300 border bg-white">
         <div class="p-8">
@@ -20,6 +21,9 @@
         </div>
         </div>
       </div>
+    <% end %>
+    <% else %>
+    <p class="mt-8 text-lg">No complaints found.<p>
     <% end %>
   </div>
 </div>

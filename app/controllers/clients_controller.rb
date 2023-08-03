@@ -8,7 +8,6 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @maids = Maid.all
     @pending_orders = @client.orders.pending.limit(3)
     @scheduled_orders = @client.orders.in_progress
     @completed_orders = @client.orders.completed.limit(2)

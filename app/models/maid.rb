@@ -1,7 +1,7 @@
 class Maid < ApplicationRecord
   has_many :orders, dependent: :destroy 
   has_many :reviews, dependent: :destroy  
-  has_many :complaints
+  has_many :complaints, dependent: :destroy
   has_secure_password
 
   enum status: {

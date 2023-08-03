@@ -5,12 +5,12 @@
     
     <div class="my-5">
       <%= form.label :stars %>
-      <%= form.select :stars, Review::STARS, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.select :stars, Review::STARS, class: "block rounded-lg border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
     <div class="my-5">
       <%= form.label :comment, "Feedback" %>
-      <%= form.text_area :comment, rows: 7, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.text_area :comment, rows: 7, class: "block rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
     <div class="inline">
