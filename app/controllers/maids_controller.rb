@@ -4,8 +4,16 @@ class MaidsController < ApplicationController
   before_action :require_correct_user, only: [:edit, :update, :destroy] 
   
   def index
-    @maids = Maid.active
+    if params[:q].present?
+      @address = params[:q]
+      @search_location = Geocoder.search(@address).first if @address
+      @maids = Maid.active.near(@address).select { |m| m.geocoded? }
+    else
+      @search_location = current_user.address
+      @maids = Maid.active
+    end
   end
+
 
   def show
   end
@@ -22,6 +30,8 @@ class MaidsController < ApplicationController
 
     respond_to do |format|
       if @maid.save
+      session[:user_id] = @maid.email
+        
         format.html { redirect_to maid_url(@maid), notice: "Account successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }

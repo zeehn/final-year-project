@@ -1,5 +1,12 @@
 <section class="mx-auto md:w-[90%]">
   <%= render "shared/notice" %>
+
+  <%= render "shared/search" %>
+
+  <% if @maids.any? %>
+  <div>
+    <p class="px-4 text-gray-500">Showing maids near: <span class="font-medium text-sm text-gray-700"><%= @address or current_user.address %></span></div>
+  </div>
   <% @maids.each do |maid| %> 
     <div class="w-full flex flex-col sm:flex-row flex-wrap sm:flex-nowrap py-6 flex-grow justify-items-center align-items-center center border rounded-lg bg-white border-gray-200 mt-4 px-4" >
       <div class="w-fixed flex-none flex-grow-0 px-4 text-center">
@@ -22,6 +29,8 @@
           <h2 class="text-3xl font-bold tracking-tight mb-4 text-blue-500"><%= link_to maid.name, maid %></h2>
           <% if current_user_admin? %>
           <%= link_to "Edit Profile", edit_maid_path(maid.id), class: "px-2 py-1.5 bg-indigo-500 text-white rounded items-center" %>
+          <% elsif current_user.instance_of?(Client) %>
+            <p class="font-xs font-medium text-gray-700"><%= maid.round(maid.distance_from(@search_location || current_user.address)) %> miles away</p>
           <% end %>
         </div>
         <span class="text-2xl flex items-center text-center text-middle">
@@ -49,6 +58,7 @@
         -->
       </div>
     </div>
+  <% end %>
   <% end %>
 </section>
 

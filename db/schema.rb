@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_02_055356) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_03_061418) do
   create_table "admins", force: :cascade do |t|
     t.string "full_name"
     t.string "email"
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_055356) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
-    t.string "address"
+    t.string "street"
     t.string "city"
     t.string "state"
     t.string "country"
@@ -34,6 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_055356) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.integer "status", default: 0
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "complaints", force: :cascade do |t|
@@ -61,6 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_055356) do
     t.boolean "admin", default: false
     t.text "about"
     t.integer "status", default: 0
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "orders", force: :cascade do |t|

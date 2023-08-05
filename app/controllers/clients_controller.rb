@@ -62,7 +62,7 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:first_name, :last_name, :email, :password, :password_confirmation, :address, :city, :state, :country, :zip)
+      params.require(:client).permit(:first_name, :last_name, :email, :password, :password_confirmation, :street, :city, :state, :country, :zip)
     end
   
     def require_correct_user
