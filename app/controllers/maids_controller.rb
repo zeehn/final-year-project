@@ -85,7 +85,7 @@ class MaidsController < ApplicationController
     end
 
     def maid_params
-      params.require(:maid).permit(:first_name, :last_name, :email, :password, :password_confirmation, :address, :city, :state, :zip, :hourly_rate)
+      params.require(:maid).permit(:first_name, :last_name, :email, :password, :password_confirmation, :address, :city, :state, :zip, :hourly_rate, :main_image)
     end
 
     def require_correct_user

@@ -4,6 +4,8 @@ class Maid < ApplicationRecord
   has_many :complaints, dependent: :destroy
   has_secure_password
 
+  has_one_attached :main_image
+
   geocoded_by :full_address
   after_validation :geocode, if: :address_part_changed? 
 

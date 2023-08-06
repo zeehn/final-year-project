@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <% if Maid.exists?(maid.id) %>
+  <div class="mt-6 my-5">
+    <%= form.label :main_image, "Profile image" %>
+    <%= form.file_field :main_image , class: "block rounded-md outline-none border-gray-200 py-2 w-full" %>
+  </div>
+  <% end %>
+
   <div class="flex my-5 space-x-4 md:w-full">
     <div class="md:w-1/2">
       <%= form.label :first_name %>

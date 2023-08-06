@@ -75,4 +75,8 @@ group :test do
   gem "webdrivers"
 end
 
+group :production do
+  gem 'pg'
+end
+
 gem 'geocoder', '~> 1.8', '>= 1.8.2'
