@@ -8,8 +8,11 @@ class MaidsController < ApplicationController
       @address = params[:q]
       @search_location = Geocoder.search(@address).first if @address
       @maids = Maid.active.near(@address).select { |m| m.geocoded? }
+    elsif !current_user.admin?
+      @search_location = current_user.address if current_user.address
+      @maids = Maid.active
     else
-      @search_location = current_user.address
+      @address = "Chicago, IL"
       @maids = Maid.active
     end
   end

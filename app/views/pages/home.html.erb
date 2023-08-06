@@ -6,9 +6,9 @@
         Our web application makes it easy to find and hire a qualified maid to clean your home for you. Let us take care of the cleaning so you can focus on what matters most.
       </p>
 
-      <div class="flex items-center justify-center w-full space-x-4 lg:justify-start">
-        <%= link_to "Hire a Maid", new_client_path, class: "p-4 text-sm font-semibold text-white bg-softBlue rounded shadow-md border-2 border-softBlue md:text-base hover:bg-white hover:text-softBlue" %>
-        <%= link_to "Work as Maid", new_maid_path, class: "p-4 text-sm font-semibold text-black bg-gray-300 rounded shadow-md border-2 border-gray-300 md:text-base hover:bg-white hover:text-gray-600" %>
+      <div class="max-w-md text-center flex items-center justify-center w-full space-x-4 lg:justify-start">
+        <%= link_to "Hire a Maid", new_client_path, class: "w-full p-4 text-sm font-semibold text-white bg-softBlue rounded shadow-md border-2 border-softBlue md:text-base hover:bg-white hover:text-softBlue" %>
+        <%= link_to "Work as Maid", new_maid_path, class: "w-full p-4 text-sm font-semibold text-black bg-gray-300 rounded shadow-md border-2 border-gray-300 md:text-base hover:bg-white hover:text-gray-600" %>
       </div>
     </div>
 
@@ -19,6 +19,3 @@
     </div>
   </div>
 </section>
-
-<%= render "layouts/features" %>
-
