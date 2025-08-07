@@ -28,8 +28,8 @@ A location-based maid hiring web application built with Ruby on Rails and Tailwi
 ## Setup Instructions
 
 ```bash
-git clone https://github.com/your-username/maid-hiring-platform.git
-cd maid-hiring-platform
+git clone https://github.com/zeehn/final-year-project.git
+cd final-year-project
 bundle install
 rails db:create db:migrate
 rails server
