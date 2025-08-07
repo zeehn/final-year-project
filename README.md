@@ -1,25 +1,43 @@
-# README
+# Maid Hiring Platform
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A location-based maid hiring web application built with Ruby on Rails and Tailwind CSS. The platform connects clients with nearby maids, allowing them to schedule services, send booking offers, and exchange ratings after job completion.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+### For Clients
+- Search for maids within a specified radius (e.g., 20km or 50km)
+- View maid profiles and hourly rates
+- Send service requests for a future date
+- Get notified when a maid accepts or rejects the offer
+- Mark jobs as completed and leave a rating and feedback
 
-* System dependencies
+### For Maids
+- Sign up and create a service profile with location, hourly rate, and description
+- Receive and manage booking offers
+- Accept or reject incoming service requests
+- View completed jobs and rate clients
 
-* Configuration
+## Tech Stack
 
-* Database creation
+- Ruby on Rails
+- Tailwind CSS
+- SQLite (development)
+- Geocoder gem (OpenStreetMap API by default)
+- Custom-built authentication system (no Devise)
 
-* Database initialization
+## Setup Instructions
 
-* How to run the test suite
+```bash
+git clone https://github.com/your-username/maid-hiring-platform.git
+cd maid-hiring-platform
+bundle install
+rails db:create db:migrate
+rails server
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Then visit http://localhost:3000 in your browser.
 
-* Deployment instructions
 
-* ...
-# final-year-project
+
+
+

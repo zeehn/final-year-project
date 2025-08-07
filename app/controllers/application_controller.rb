@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   private 
     def find_user_by_session_id(id)
       if session[:user_id]
-        user ||= Client.find_by(email: id) or Maid.find_by(email: id) or Admin.find_by(email: id)
+        @user ||= Client.find_by(email: id) or Maid.find_by(email: id) or Admin.find_by(email: id)
       end
     end
 end
